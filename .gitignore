@@ -1,0 +1,14 @@
+.idea/
+
+# Исключаем конфигурацию проекта
+config.yaml
+
+# Системные файлы
+.DS_Store
+*.log
+
+# Go-специфичные файлы
+/bin/
+
+# IntelliJ IDEA project file
+*.iml
