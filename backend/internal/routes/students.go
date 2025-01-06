@@ -1,8 +1,8 @@
 package routes
 
 import (
-	"first-go-pet-project/internal/handlers"
-	"first-go-pet-project/internal/usecases"
+	"first-go-pet-project/backend/internal/handlers"
+	"first-go-pet-project/backend/internal/usecases"
 	"net/http"
 )
 

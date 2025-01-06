@@ -1,8 +1,8 @@
 package usecases
 
 import (
-	"first-go-pet-project/internal/entities"
-	"first-go-pet-project/internal/interfaces"
+	"first-go-pet-project/backend/internal/entities"
+	"first-go-pet-project/backend/internal/interfaces"
 )
 
 type StudentService struct {

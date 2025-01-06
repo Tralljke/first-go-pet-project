@@ -1,7 +1,7 @@
 package infrastructure
 
 import (
-	"first-go-pet-project/internal/entities"
+	"first-go-pet-project/backend/internal/entities"
 	"gorm.io/gorm"
 )
 

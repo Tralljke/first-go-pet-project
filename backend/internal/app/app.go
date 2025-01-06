@@ -1,10 +1,10 @@
 package app
 
 import (
-	"first-go-pet-project/internal/config"
-	"first-go-pet-project/internal/infrastructure"
-	"first-go-pet-project/internal/routes"
-	"first-go-pet-project/internal/usecases"
+	"first-go-pet-project/backend/internal/config"
+	"first-go-pet-project/backend/internal/infrastructure"
+	"first-go-pet-project/backend/internal/routes"
+	"first-go-pet-project/backend/internal/usecases"
 	"fmt"
 	"gorm.io/gorm"
 	"log"
@@ -51,9 +51,24 @@ func NewApp(configPath string) (*App, error) {
 	}, nil
 }
 
+func corsMiddleware(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Access-Control-Allow-Origin", "*") // Разрешить все источники, можно заменить "*" на конкретный домен
+		w.Header().Set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
+		w.Header().Set("Access-Control-Allow-Headers", "Content-Type, Authorization")
+		if r.Method == http.MethodOptions {
+			w.WriteHeader(http.StatusOK)
+			return
+		}
+		next.ServeHTTP(w, r)
+	})
+}
+
 func (a *App) Start() {
 	fmt.Println("Server is running on http://localhost:8080")
-	if err := http.ListenAndServe(":8080", a.Router); err != nil {
+
+	handlerWithCORS := corsMiddleware(a.Router)
+	if err := http.ListenAndServe(":8080", handlerWithCORS); err != nil {
 		log.Fatalf("Error starting server: %v", err)
 	}
 }

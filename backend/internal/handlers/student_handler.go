@@ -2,7 +2,7 @@ package handlers
 
 import (
 	"encoding/json"
-	"first-go-pet-project/internal/usecases"
+	"first-go-pet-project/backend/internal/usecases"
 	"net/http"
 )
 

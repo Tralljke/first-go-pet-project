@@ -11,7 +11,7 @@ import (
 )
 
 func RunMigrations(dsn string) {
-	migrationsDir := "file://migrations"
+	migrationsDir := "file://backend/migrations"
 
 	m, err := migrate.New(migrationsDir, dsn)
 	if err != nil {
