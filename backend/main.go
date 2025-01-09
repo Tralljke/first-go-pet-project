@@ -13,7 +13,6 @@ func main() {
 		log.Fatalf("Error initializing application: %v", err)
 	}
 
-	// Регистрируем маршрут для health
 	application.Router.HandleFunc("/api/health", routes.HealthHandler)
 
 	application.Start()
